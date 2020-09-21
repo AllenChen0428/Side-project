@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <title>攝像頭拍照</title>
+    <script>
+        window.onload = function () {
+            var file = document.getElementById("file");
+            var fileName = document.getElementById("fileName");
+            var fileName01 = document.getElementById("fileName01");
+            var image = document.getElementById("image");
+        }    
+        function handleFile() {
+            fileName.value = file.value;
+        }
+        function handleFile01() {
+            fileName01.value = image.value;
+        }
+    </script>
+    <style>
+        /*a  upload */
+        .a-picture {
+            padding: 4px 10px;
+            height: 30px;
+            line-height: 20px;
+            position: relative;
+            cursor: pointer;
+            color: #ffffff;
+            background: #808080;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            display: inline-block;
+            *display: inline;
+            *zoom: 1
+        }
+
+        .a-picture input {
+            position: absolute;
+            font-size: 100px;
+            right: 0;
+            top: 0;
+            opacity: 0;
+            filter: alpha(opacity=0);
+            cursor: pointer
+        }
+     
+        .a-picture {
+            color: rgba(255,255,255,1);
+            transition: all 0.5s;
+            border: 1px solid rgba(255,255,255,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .a-picture span {
+            z-index: 2;
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .a-picture:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0;
+            background-color: rgba(0,0,0,0.5);
+            transition: all 0.5s;
+        }
+
+        .a-picture:hover::before {
+            opacity: 1;
+            transform: skewX(-180deg) scale(0.5,1);
+        }
+    </style>
+</head>
+<body>
+    <div id="divReason" data-role="fieldcontain">
+        <table>
+            <tr>
+                <td>
+                    <a class="a-picture">
+                        <input type="file" accept="image/*" id="file" onchange="handleFile()">拍攝證明文件照片<!--onchange="handleFile()"-->                      
+                    </a>                  
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" disabled="disabled" value="檔名" id="fileName" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="file-box"></div>
+                    <label>從相簿選擇證明文件照片: </label>
+                    <input type="file" multiple accept="image/png" id="image"onchange="handleFile01()"/>   <!--僅限PNG檔上傳-->
+                    <p><!--<input id="txtReason" type="text" placeholder="請輸入附件備註" required="required" />--></p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!--<input type="text" disabled="disabled" value="檔名" id="fileName01" />-->
+                    <!--<input type="text" disabled="disabled" value="檔名" id="fileName01" />-->
+                </td>
+            </tr>
+        </table>
+    </div>
+    <!--<script src="JavaScript/JavaScript03.js"></script>-->
+</body>
+</html>
